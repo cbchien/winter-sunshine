@@ -7,7 +7,7 @@ const App = () => {
     return (
         <div>
             <h3>Basic Application</h3>
-            <p>This will be updated later</p>
+            <p>This will be updated later!</p>
         </div>
     );
 }
