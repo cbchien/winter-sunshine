@@ -4,8 +4,8 @@ import classnames from 'classnames';
 
 import './Button.scss';
 
-const Button = ({ children, onClick, className, ...props }) => {   
-    const css = classnames('sunshine-btn', className );
+const Button = ({ children, onClick, className, disabled, ...props }) => {   
+    const css = classnames('sunshine-btn', className, disabled ? 'btn-disabled':'' );
 
     return (
       <button className={css} onClick={onClick} {...props}>
@@ -19,6 +19,7 @@ Button.propTypes = {
     onClick: PropTypes.func,
     className: PropTypes.string,
     props: PropTypes.any,
+    disabled: PropTypes.bool
 };
 
 export default Button
