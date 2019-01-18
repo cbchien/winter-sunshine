@@ -60,7 +60,9 @@ class SkillSelect extends Component{
             return false
         }
 
-        let newId = this.state.skills[this.state.skills.length -1].id + 1
+        // Add 1 to the largest id to prevent duplication
+        let newId = this.state.skills.reduce((a,b) => { return Math.max(a.id, b.id);}) + 1
+    
         skills.push({
             id: newId,
             name: skillName,
