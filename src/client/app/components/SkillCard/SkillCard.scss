@@ -1,0 +1,35 @@
+@import '../../../variables';
+
+.sunshine-skill-card {
+    background-color: #FFFFFF;
+    display: inline-flex;
+    border-radius: 3px;
+    border: 1px solid $gray;
+    margin: 3px;
+
+    .skill-card-left-section {
+        background: black;
+        padding: 6px 4px;
+    }
+    
+    .skill-card-center-section {
+        min-width: 80px;
+        padding: 6px 6px;
+    }
+    
+    .skill-card-right-section {
+        visibility: hidden;
+        padding: 6px 6px 6px 4px;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 8px 3px #9ba4b2;
+        .skill-card-left-section {
+            background-color: #92fcc9;
+        }
+
+        .skill-card-right-section {
+            visibility: visible;
+        }
+    }
+}
