@@ -1,10 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const paths = require('./../paths');
 
 module.exports = {
     entry: paths.clientMain,
     module: {
-      rules: [
+        rules: [
         {
             // transpile js/jsx source code with babel
             test: /\.(js|jsx)$/,
@@ -23,7 +24,7 @@ module.exports = {
                 'sass-loader',
             ],
         },
-      ]
+        ]
     },
     resolve: {
         extensions: ['*', '.js', '.jsx']
@@ -35,9 +36,10 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({ 
-          template: paths.indexHtml, 
-          filename: './index.html' 
+            template: paths.indexHtml, 
+            filename: './index.html' 
         }),
+        new Dotenv()
     ],
     devServer: {
         contentBase: paths.dist,

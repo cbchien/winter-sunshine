@@ -22,10 +22,6 @@
         "plugin:react/recommended"
     ],
     "rules": {
-        "arrow-body-style": [
-            "error",
-            "always"
-        ],
         "max-len": [
             "error",
             140

@@ -11,6 +11,8 @@ import SkillCard from '../../components/SkillCard/SkillCard';
 import {SKILL_LENGTH_OPTIONS, fetchSkillsStart, addSkillStart, deleteSkillStart} from './../../redux/constant/skills';
 import {fetchSkillsRequest, addSkillRequest, deleteSkillRequest} from './../../action/skills/skillsRequest';
 
+const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000' ;
+
 class SkillSelect extends Component{
     static propTypes = {
         skills: PropTypes.array,
@@ -166,15 +168,15 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchData: () => {
             dispatch(fetchSkillsStart())
-            return dispatch(fetchSkillsRequest('http://localhost:3000/skills'))
+            return dispatch(fetchSkillsRequest(API_BASE_URL + '/skills'))
         },
         addSkill: (newSkill) => {
             dispatch(addSkillStart())
-            return dispatch(addSkillRequest('http://localhost:3000/skills', newSkill))
+            return dispatch(addSkillRequest(API_BASE_URL + '/skills', newSkill))
         },
         deleteSkill: (id) => {
             dispatch(deleteSkillStart())
-            return dispatch(deleteSkillRequest('http://localhost:3000/skills', id))
+            return dispatch(deleteSkillRequest(API_BASE_URL + '/skills', id))
         },
     }
 };

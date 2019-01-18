@@ -13,13 +13,6 @@ export function fetchSkillsRequest(url) {
 
     return fetch(url)
         .then((res) => res.json())
-        .then((res) => {
-            if (res.confirmation && res.confirmation === 'fail') {
-                throw res.message;
-            } else {
-                return res;
-            }
-        })
         .then((skills) => fetchSkillsSuccess(skills))
         .catch((err) => fetchSkillsFailure(err));
 }
