@@ -1,0 +1,25 @@
+@import '../../../variables';
+
+.sunshine-header {
+    background-color: $primary-color;
+    color: $white;
+    display: flex;
+    position: relative;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+
+    .sunshine-header__title {
+        font-size: $font-large;
+        margin: 0px 0px 0px 12px;
+    }
+
+    .sunshine-header__nav {
+        margin:auto 0 auto auto;
+        vertical-align: middle;
+
+        .sunshine-header__nav-item {
+            margin: 0 5px;
+            color: $white;
+        }
+    }
+}
