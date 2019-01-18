@@ -1,43 +1,55 @@
 /* eslint no-undef: 0 */
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Button from '../../components/Common/Button';
 import DropDownSelect from '../../components/Common/Select';
 import Input from '../../components/Common/Input';
 import SkillCard from '../../components/SkillCard/SkillCard';
 
-import {SKILL_LENGTH_OPTIONS} from './../../redux/constant/skills';
+import {SKILL_LENGTH_OPTIONS, fetchSkillsStart, addSkillStart, deleteSkillStart} from './../../redux/constant/skills';
+import {fetchSkillsRequest, addSkillRequest, deleteSkillRequest} from './../../action/skills/skillsRequest';
 
 class SkillSelect extends Component{
+    static propTypes = {
+        skills: PropTypes.array,
+        fetchData: PropTypes.func,
+        addSkill: PropTypes.func,
+        deleteSkill: PropTypes.func
+    };
+
     constructor(props) {
         super(props);
+        
         this.state = {
             skillName: '',
             skillExperience: '',
-            // dummy data
-            skills: [
-                {
-                  "id": 123,
-                  "name": "React",
-                  "expirience": "0to1"
-                },
-                {
-                  "id": 124,
-                  "name": "Express.js",
-                  "expirience": "1to3"
-                }
-            ]
         };
 
-        this.AddSkill = this.AddSkill.bind(this)
+        this.resetState = this.resetState.bind(this)
+        this.addSkill = this.addSkill.bind(this)
+        this.removeSkill = this.removeSkill.bind(this)
         this.onNameChange = this.onNameChange.bind(this)
         this.onExperienceSelect = this.onExperienceSelect.bind(this)
         this.generateSkillCards = this.generateSkillCards.bind(this)
     }
 
-    AddSkill = () => {
+    componentDidMount() {
+        this.props.fetchData()
+    }
+
+    resetState = () => {
+        this.setState({
+            skillName: '',
+            skillExperience: '',
+        })
+    }
+
+    addSkill = () => {
         let re = new RegExp('^[a-zA-Z0-9]*$')
-        let {skills, skillName, skillExperience} = this.state
+        let { skillName, skillExperience } = this.state
+        let { skills } = this.props
 
         // Input checks
         if (!skillName && !skillExperience) {
@@ -61,22 +73,31 @@ class SkillSelect extends Component{
         }
 
         // Add 1 to the largest id to prevent duplication
-        let newId = this.state.skills.reduce((a,b) => { return Math.max(a.id, b.id);}) + 1
+        let newId = this.props.skills.reduce((a,b) => { return Math.max(a.id, b.id);}) + 1
     
-        skills.push({
+        let newSkill = {
             id: newId,
             name: skillName,
             expirience: skillExperience.value
-        })
+        }
 
-        // add new skill and reset inputs
-        this.setState({
-            skills: skills,
-            skillName: '',
-            skillExperience: '',
+        if(!this.props.addSkill) { return }
+
+        this.props.addSkill(newSkill).then(()=>{
+            this.props.fetchData()
+            this.resetState()
         })
     }
 
+    removeSkill = (id) => {
+        if (!this.props.deleteSkill) {return}
+
+        this.props.deleteSkill(id).then(()=>{
+            this.props.fetchData()
+            this.resetState()
+        })
+    }
+    
     onNameChange = (e) => {
         this.setState({
             skillName: e.target.value,
@@ -91,15 +112,15 @@ class SkillSelect extends Component{
 
     generateSkillCards = () => {
         let skillCards 
-        if (this.state.skills) {
-            skillCards = this.state.skills.map((skill, i) => {
+        if (this.props.skills) {
+            skillCards = this.props.skills.map((skill, i) => {
                 return <SkillCard
                     key={skill.id}
                     index={i+1}
                     title={skill.name}
                     skillLevel={SKILL_LENGTH_OPTIONS.find(s => {return s.value == skill.expirience}).label}
                     highlighted={(i+1) <= 5 ? true : false}
-                    onClick={this.test2}
+                    onClick={this.removeSkill.bind(this, skill.id)}
                 />
             })
         } else {
@@ -123,19 +144,39 @@ class SkillSelect extends Component{
                         options={SKILL_LENGTH_OPTIONS}
                     />
                     <Button
-                        onClick={this.AddSkill}
+                        onClick={this.addSkill}
                         disabled={!this.state.skillName || !this.state.skillExperience ? true : false}
                     >
                         Add Skills
                     </Button>
                 </div>
                 <div>
-                    {this.state.skills && this.state.skills.length > 0 ? this.generateSkillCards() : ''}
+                    {this.props.skills && this.props.skills.length > 0 ? this.generateSkillCards() : ''}
                 </div>
 			</section>
 		)
 	}
 }
 
-export default SkillSelect;
+const mapStateToProps = state => ({
+    skills: state.skill.items,
+});
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchData: () => {
+            dispatch(fetchSkillsStart())
+            return dispatch(fetchSkillsRequest('http://localhost:3000/skills'))
+        },
+        addSkill: (newSkill) => {
+            dispatch(addSkillStart())
+            return dispatch(addSkillRequest('http://localhost:3000/skills', newSkill))
+        },
+        deleteSkill: (id) => {
+            dispatch(deleteSkillStart())
+            return dispatch(deleteSkillRequest('http://localhost:3000/skills', id))
+        },
+    }
+};
+  
+export default connect(mapStateToProps, mapDispatchToProps)(SkillSelect);
