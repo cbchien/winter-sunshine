@@ -1,0 +1,25 @@
+{
+    "skills": [
+      {
+        "id": 123,
+        "name": "React",
+        "expirience": "0to1"
+      },
+      {
+        "id": 124,
+        "name": "Express.js",
+        "expirience": "1to3"
+      },
+      {
+        "id": 125,
+        "name": "GraphQL",
+        "expirience": "3to5"
+      },
+      {
+        "id": 126,
+        "name": "React2",
+        "expirience": "7up"
+      }
+    ]
+  }
+
