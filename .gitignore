@@ -13,3 +13,6 @@ npm-debug.log*
 
 # editor
 .vscode
+
+# json-server db
+db.json
