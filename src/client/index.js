@@ -1,15 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+import App from './app';
+
 import './styles.scss';
 
-const App = () => {
+const ReactApp = () => {
     return (
-        <div>
-            <h3>Basic Application</h3>
-            <p>This will be updated later!</p>
-        </div>
+        <App />
     );
 }
 
-render(<App />, document.getElementById('app'));
+render(<ReactApp />, document.getElementById('app'));
