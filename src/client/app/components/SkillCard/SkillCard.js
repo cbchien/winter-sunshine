@@ -1,35 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import './SkillCard.scss';
 
 const SkillCard = (props) => {
-  const { className, index, title, skillLevel } = props;
-
-  return (
-    <div className={`sunshine-skill-card ${className}`}>
-        <div className='skill-card-left-section'>
-            {index}
+    const { className, index, title, skillLevel, highlighted, onClick } = props;
+    const highlightedCss = classnames('skill-card-left-section', highlighted ? 'card-highlighted' : '')
+    return (
+        <div className={`sunshine-skill-card ${className}`}>
+            <div className={highlightedCss}>
+                {index}
+            </div>
+            <div className='skill-card-center-section'>
+                <div>{title}</div>
+                <div>{skillLevel}</div>
+            </div>
+            <div className='skill-card-right-section'>
+                <FontAwesomeIcon icon={faTimes} onClick={onClick}/>
+            </div>
         </div>
-        <div className='skill-card-center-section'>
-            <div>{title}</div>
-            <div>{skillLevel}</div>
-        </div>
-        <div className='skill-card-right-section'>
-            <FontAwesomeIcon icon={faTimes} />
-        </div>
-    </div>
-  );
+    );
 }
 
 SkillCard.propTypes = {
-  children: PropTypes.any,
   className: PropTypes.string,
-  index: PropTypes.number,
-  skillLevel: PropTypes.string,
-  title: PropTypes.string,
+  index: PropTypes.number.isRequired,
+  skillLevel: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  highlighted: PropTypes.bool,
+  onClick: PropTypes.func
 };
 
 export default SkillCard
