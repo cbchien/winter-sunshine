@@ -1,0 +1,54 @@
+@import '../../../variables';
+
+@media only screen and (max-width: $default-moblie) {
+    .sunshine-skill-select {
+        position: relative;
+        
+        .sunshine-skill-select__inputs {
+            position: relative;        
+            margin: 5px;
+        
+            .sunshine-input-text {
+                margin: 0px;
+                padding-left: 10px;
+                padding-right: 10px;
+                width: calc(100% - 22px);
+            }
+    
+            .sunshine-select {
+                display: inline-block;
+                margin: 5px 5px 0px 0px;
+                width: 60%;
+            }
+    
+            .sunshine-btn {
+                display: inline-block;
+                margin: 5px 0px 0px 0px;
+                width: 38%;
+            }
+        }
+    
+        .sunshine-skill-select__cards{
+            position: relative;
+            
+            .sunshine-skill-card {
+                // 2px to account for border width
+                width: 100%;
+                border-left: none;
+                border-right: none;
+                margin: 0px;
+
+                &:hover {
+                    box-shadow: 0px 0px 4px 1px #9ba4b2;
+                }
+            }
+    
+            .skill-card-right-section {
+                visibility: visible;
+                position: absolute;
+                right: 10px;
+                padding-top: 10px;
+            }
+        }
+    }
+}

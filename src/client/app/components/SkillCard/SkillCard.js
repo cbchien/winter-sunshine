@@ -9,8 +9,10 @@ import './SkillCard.scss';
 const SkillCard = (props) => {
     const { className, index, title, skillLevel, highlighted, onClick } = props;
     const highlightedCss = classnames('skill-card-left-section', highlighted ? 'card-highlighted' : '')
+    const css = classnames('sunshine-skill-card', className)
+    
     return (
-        <div className={`sunshine-skill-card ${className}`}>
+        <div className={css}>
             <div className={highlightedCss}>
                 {index}
             </div>

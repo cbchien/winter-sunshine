@@ -1,0 +1,9 @@
+@import '../../../variables';
+
+@media only screen and (max-width: $default-moblie) {
+    .sunshine-header {
+        .sunshine-header__title {
+            font-size: $font-medium;
+        }    
+    }
+}

@@ -11,6 +11,9 @@ import SkillCard from '../../components/SkillCard/SkillCard';
 import {SKILL_LENGTH_OPTIONS, fetchSkillsStart, addSkillStart, deleteSkillStart} from './../../redux/constant/skills';
 import {fetchSkillsRequest, addSkillRequest, deleteSkillRequest} from './../../action/skills/skillsRequest';
 
+import './SkillSelect.scss'
+import './SkillSelect.rwd.scss'
+
 const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000' ;
 
 class SkillSelect extends Component{
@@ -134,7 +137,7 @@ class SkillSelect extends Component{
 	render() {
         return(
 			<section className="sunshine-skill-select">
-                <div>
+                <div className="sunshine-skill-select__inputs">
                     <Input
                         value={this.state.skillName}
                         onChange={this.onNameChange}
@@ -152,7 +155,7 @@ class SkillSelect extends Component{
                         Add Skills
                     </Button>
                 </div>
-                <div>
+                <div className="sunshine-skill-select__cards">
                     {this.props.skills && this.props.skills.length > 0 ? this.generateSkillCards() : ''}
                 </div>
 			</section>

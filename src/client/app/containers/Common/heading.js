@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import './heading.scss'
+import './heading.rwd.scss'
 
 class Heading extends Component {
     constructor(props) {

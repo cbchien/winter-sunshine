@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import classnames from 'classnames';
 
 import './Select.scss';
 
 const DropDownSelect = (props) => {
 	const { className, ...otherProps } = props;
+    const css = classnames('sunshine-select', className );
 
 	return (
 		<Select
-			className={`sunshine-select ${className}`}
+			className={css}
 			isSearchable={false}
 			isClearable={false}
 			backspaceRemovesValue={false}

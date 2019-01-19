@@ -1,0 +1,27 @@
+@import '../../../variables';
+
+.sunshine-skill-select {
+    position: relative;
+    
+    .sunshine-skill-select__inputs {
+        margin: 5px;
+    
+        .sunshine-input-text {
+            margin: 0px 5px 0px 0px;
+            padding-left: 10px;
+            padding-right: 10px;
+            // 40px to account for margin
+            width: calc(40% - 40px);
+        }
+
+        .sunshine-select {
+            transform: translateY(1px);
+            margin: 0px 5px 0px 0px;
+            width: 30%;
+        }
+
+        .sunshine-btn {
+            width: 30%;
+        }
+    }
+}
