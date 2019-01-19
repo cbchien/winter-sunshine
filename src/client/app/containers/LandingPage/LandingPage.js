@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Heading from '../Common/heading';
-import Footer from '../common/footer';
+import Footer from '../Common/footer';
 import SkillSelect from '../SkillSelect/SkillSelect'
 
 import './LandingPage.scss'
