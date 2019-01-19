@@ -83,7 +83,7 @@ class SkillSelect extends Component{
         let newSkill = {
             id: newId,
             name: skillName,
-            expirience: skillExperience.value
+            experience: skillExperience.value
         }
 
         if(!this.props.addSkill) { return }
@@ -123,7 +123,7 @@ class SkillSelect extends Component{
                     key={skill.id}
                     index={i+1}
                     title={skill.name}
-                    skillLevel={SKILL_LENGTH_OPTIONS.find(s => {return s.value == skill.expirience}).label}
+                    skillLevel={SKILL_LENGTH_OPTIONS.find(s => {return s.value == skill.experience}).label}
                     highlighted={(i+1) <= 5 ? true : false}
                     onClick={this.removeSkill.bind(this, skill.id)}
                 />
