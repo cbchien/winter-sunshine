@@ -6,20 +6,27 @@ import {
     deleteSkillStart, deleteSkillSuccess, deleteSkillFailure,
 } from './../../redux/constant/skills';
 
-export function fetchSkillsRequest(url) {
-    if (!url) { return }
+export const fetchSkillsRequest = (url) => {
+    if (!url) { return fetchSkillsFailure('Error. No url provided.')}
 
     fetchSkillsStart()
 
     return fetch(url)
-        .then((res) => res.json())
+        .then((res) => {
+            if (res.status == 404) {
+                return fetchSkillsFailure('Error in API request')
+            }
+            return res.json()
+        })
         .then((skills) => fetchSkillsSuccess(skills))
         .catch((err) => fetchSkillsFailure(err));
 }
 
-export function addSkillRequest(url, skill) {
-    if (!url) { return }
-
+export const addSkillRequest = (url, skill) => {
+    if (!url) { return addSkillFailure('Error. No url provided.')}
+    if (!skill.name) {return addSkillFailure('Error. No skill name provided.')}
+    if (!skill.experience) {return addSkillFailure('Error. No experience provided.')}
+    
     addSkillStart()
 
     return fetch(url, {
@@ -30,13 +37,29 @@ export function addSkillRequest(url, skill) {
                 'Content-Type': 'application/json'
             }
         })
+        // .then((res) => {
+        //     if (res.status == 404) {
+        //         // no customized message yet from json-server
+        //         return addSkillFailure('Error in API request')
+        //     } else {
+        //         return addSkillSuccess(res.json())
+        //     }
+        // })
         .then((res) => res.json())
-        .then((skill) => addSkillSuccess(skill))
+        .then((skill) => {
+            if (skill.id) {
+                return addSkillSuccess(skill)
+            } else {
+                return addSkillFailure('Error in API request')
+            }
+        })
         .catch((err) => addSkillFailure(err));
 }
 
-export function deleteSkillRequest(url, id) {
-    if (!url) { return }
+export const deleteSkillRequest = (url, id) => {
+    if (!url) { return deleteSkillFailure('Error. No url provided.')}
+    if (!id) {return deleteSkillFailure('Error. No skill id provided.')}
+    
     let concatUrl = url[url.length - 1] == '/' ? `${url}${id}` : `${url}/${id}`
     deleteSkillStart()
 
@@ -47,7 +70,13 @@ export function deleteSkillRequest(url, id) {
                 'Content-Type': 'application/json'
             }
         })
-        .then((res) => res.json())
-        .then((skill) => deleteSkillSuccess(skill))
+        .then((res) => {
+            if (res.status == 404) {
+                // no customized message yet from json-server
+                return deleteSkillFailure('Error in API request')
+            } else {
+                return deleteSkillSuccess(res.json())
+            }
+        })
         .catch((err) => deleteSkillFailure(err));
 }
