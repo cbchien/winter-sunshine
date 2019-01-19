@@ -21,6 +21,9 @@ This is a simple React App that ultilze the following libraries
 3. `npm run start:dev` to run app on local environment
 4. `npm run start:prod` to run on production
 
+## Live Demo [Sunshine Skill](https://ambitious-lavender.glitch.me/)
+**Please have JSON server up with `npm run api` to see data interaction**. The page will not have any skill cards and will not be interactive otherwise.
+
 ## Scripts
 ```
     "test"                  # run JEST and Enzyme tests,
@@ -62,23 +65,26 @@ GET POST PUT PATCH DELETE OPTIONS
 ## Notes
 ### Time spent on exercise
 Time log: 
-1.0 hr: study instruction and refresh on mentioned technology and also for updates
-1.0 hr: initial configuration (file structure, eslint, gitignore, package.json)
-1.0 hr: basic React folder structure
-2.0 hr: create Input, Select, Button, SkillCard component
-2.0 hr: complete SkillSelect container to match UI requirement
-1.0 hr: update LandingPage and styling
-1.0 hr: integrate JSON-server and isomorphic-fetch 
-2.5 hr: set up Redux and extract API URL
-1.0 hr: RWD and minor css modification
-2.0 hr: JEST
-1.0 hr: test application and fix issues
-1.0 hr: attempt to integrate robust Enzyme
-0.5 hr: create detailed README.md
-1.5 hr: trying to be better...
+- 1.0 hr: study instruction and refresh on mentioned technology and also for updates
+- 1.0 hr: initial configuration (file structure, eslint, gitignore, package.json)
+- 1.0 hr: basic React folder structure
+- 2.0 hr: create Input, Select, Button, SkillCard component
+- 2.0 hr: complete SkillSelect container to match UI requirement
+- 1.0 hr: update LandingPage and styling
+- 1.0 hr: integrate JSON-server and isomorphic-fetch 
+- 2.5 hr: set up Redux and extract API URL
+- 1.0 hr: RWD and minor css modification
+- 2.0 hr: JEST
+- 1.0 hr: test application and fix issues
+- 1.0 hr: attempt to integrate robust Enzyme
+- 0.5 hr: create detailed README.md
+- 1.5 hr: trying to be better...
 
 ### Possible steps if time permits
 1. Create more Enzyme tests for react components
 2. Add UPDATE skill card functionality
-3. Revisit existing folder structure
+3. Add confirmation box for DELETE
+4. Create a simple backend with db connection instead of json-server
+5. Revisit existing folder structure
+6. Fine tune RWD
 
