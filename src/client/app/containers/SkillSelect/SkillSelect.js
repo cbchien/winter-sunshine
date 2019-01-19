@@ -69,7 +69,7 @@ class SkillSelect extends Component{
         } else if (skillName.length < 4 || skillName.length > 255) {
             alert('Skills must be a minimum length of 4 characters and a maximum length of 255 characters.')
             return false
-        } else if (skills.some(skill => {return skill.name == skillName})) {
+        } else if (skills && skills.some(skill => {return skill.name == skillName})) {
             alert('Skill exist. No update function yet')
             return false
         } else if (!skillName.match(re)) {
@@ -78,6 +78,7 @@ class SkillSelect extends Component{
         }
 
         // Add 1 to the largest id to prevent duplication
+        // json-server has built-in logic, though
         let newId = this.props.skills.reduce((a,b) => { return Math.max(a.id, b.id);}) + 1
     
         let newSkill = {

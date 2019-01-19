@@ -6,6 +6,10 @@ import {
     deleteSkillSuccess, deleteSkillFailure,
 } from './../../redux/constant/skills';
 
+/**
+ * Return an array of skills 
+ * @param {string} url 
+ */
 export const fetchSkillsRequest = (url) => {
     if (!url) { return fetchSkillsFailure('Error. No url provided.')}
 
@@ -20,6 +24,13 @@ export const fetchSkillsRequest = (url) => {
         .catch((err) => fetchSkillsFailure(err));
 }
 
+/**
+ * Delete a skill with matching id 
+ * @param {string} url 
+ * @param {object} skill 
+ * @param {string} skill.name
+ * @param {string} skill.experience 
+ */
 export const addSkillRequest = (url, skill) => {
     if (!url) { return addSkillFailure('Error. No url provided.')}
     if (!skill.name) {return addSkillFailure('Error. No skill name provided.')}
@@ -44,6 +55,11 @@ export const addSkillRequest = (url, skill) => {
         .catch((err) => addSkillFailure(err));
 }
 
+/**
+ * Delete a skill with matching id 
+ * @param {string} url 
+ * @param {number} id  
+ */
 export const deleteSkillRequest = (url, id) => {
     if (!url) { return deleteSkillFailure('Error. No url provided.')}
     if (!id) {return deleteSkillFailure('Error. No skill id provided.')}

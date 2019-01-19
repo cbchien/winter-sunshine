@@ -5,6 +5,9 @@ dotenv.config()
 
 const url = process.env.API_SKILLS_URL || 'http://localhost:3000/skills'
 
+/**
+ * JEST test for fetchSkillsRequest related calls 
+ */
 describe(`fetchSkillsRequest`, () =>{
     test(`fetchSkillsRequest:: fetch all skills in db`, () => {
         return fetchSkillsRequest(url).then((res) => {
@@ -14,6 +17,9 @@ describe(`fetchSkillsRequest`, () =>{
     })    
 })
 
+/**
+ * JEST test for addSkillRequest related calls 
+ */
 describe(`addSkillRequest`, () => {
     test(`addSkillRequest:: creating 'dummy1' skill`, () => {
         return addSkillRequest(url, {
@@ -54,6 +60,9 @@ describe(`addSkillRequest`, () => {
     })    
 })
 
+/**
+ * JEST test for deleteSkillRequest related calls 
+ */
 describe(`deleteSkillRequest`, () => {
     test(`deleteSkillRequest:: missing id`, () => {
         return deleteSkillRequest(url, 12356789).then(res => {

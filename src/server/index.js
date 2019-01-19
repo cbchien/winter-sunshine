@@ -12,7 +12,7 @@ app.use(express.static(paths.dist));
 app.use('/', routes);
 
 // Get port from environment and store in Express
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || '8000';
 app.set('port', port);
 
 // Create HTTP server

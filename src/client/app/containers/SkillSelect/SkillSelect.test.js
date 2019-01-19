@@ -3,7 +3,9 @@ import { shallow } from './../../../enzyme';
 
 import SkillSelect from './SkillSelect';
 
-
+/**
+ * Enzyme test for SkillSelect react components 
+ */
 describe('SkillSelect tests', () => {
     const skills = [
         {
