@@ -81,3 +81,4 @@ Time log:
 1. Create more Enzyme tests for react components
 2. Add UPDATE skill card functionality
 3. Revisit existing folder structure
+
