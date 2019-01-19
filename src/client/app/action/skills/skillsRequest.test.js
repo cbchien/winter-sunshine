@@ -14,62 +14,62 @@ describe(`fetchSkillsRequest`, () =>{
     })    
 })
 
-// describe(`addSkillRequest`, () => {
-//     test(`addSkillRequest:: creating 'dummy1' skill`, () => {
-//         return addSkillRequest(url, {
-//             id: 999999,
-//             name: "dummy1",
-//             experience: "1to3"
-//         }).then(res => {
-//             // console.log(res)
-//             expect(res.type).toBe('ADD_SKILL_SUCCESS')
-//             expect(res.payload.skill.id).toBe(999999)
-//         })
-//     })
+describe(`addSkillRequest`, () => {
+    test(`addSkillRequest:: creating 'dummy1' skill`, () => {
+        return addSkillRequest(url, {
+            id: 999999,
+            name: "dummy1",
+            experience: "1to3"
+        }).then(res => {
+            // console.log(res)
+            expect(res.type).toBe('ADD_SKILL_SUCCESS')
+            expect(res.payload.skill.id).toBe(999999)
+        })
+    })
 
-//     test(`addSkillRequest:: must pass in url to function`, () => {
-//         let res = addSkillRequest('', {
-//             id: 99999,
-//             name: "dummy1",
-//             experience: "1to3"
-//         })
-//         expect(res.type).toBe('ADD_SKILL_FAILURE')
-//         expect(res.payload.err).toEqual(expect.stringContaining('No url'))
-//     })
+    test(`addSkillRequest:: must pass in url to function`, () => {
+        let res = addSkillRequest('', {
+            id: 99999,
+            name: "dummy1",
+            experience: "1to3"
+        })
+        expect(res.type).toBe('ADD_SKILL_FAILURE')
+        expect(res.payload.err).toEqual(expect.stringContaining('No url'))
+    })
     
-//     test(`addSkillRequest:: skill must include skill name`, () => {
-//         let res = addSkillRequest(url, {
-//             experience: "1to3"
-//         })
-//         expect(res.type).toBe('ADD_SKILL_FAILURE')
-//         expect(res.payload.err).toEqual(expect.stringContaining('No skill name'))
-//     })
+    test(`addSkillRequest:: skill must include skill name`, () => {
+        let res = addSkillRequest(url, {
+            experience: "1to3"
+        })
+        expect(res.type).toBe('ADD_SKILL_FAILURE')
+        expect(res.payload.err).toEqual(expect.stringContaining('No skill name'))
+    })
     
-//     test(`addSkillRequest:: skill must include experience`, () => {
-//         let res = addSkillRequest(url, {
-//             name: "dummy1"
-//         })
-//         expect(res.type).toBe('ADD_SKILL_FAILURE')
-//         expect(res.payload.err).toEqual(expect.stringContaining('No experience'))
-//     })    
-// })
+    test(`addSkillRequest:: skill must include experience`, () => {
+        let res = addSkillRequest(url, {
+            name: "dummy1"
+        })
+        expect(res.type).toBe('ADD_SKILL_FAILURE')
+        expect(res.payload.err).toEqual(expect.stringContaining('No experience'))
+    })    
+})
 
-// describe(`deleteSkillRequest`, () => {
-//     test(`deleteSkillRequest:: missing id`, () => {
-//         return deleteSkillRequest(url, 12356789).then(res => {
-//             expect(res.type).toBe('DELETE_SKILL_FAILURE')
-//         })
-//     })
+describe(`deleteSkillRequest`, () => {
+    test(`deleteSkillRequest:: missing id`, () => {
+        return deleteSkillRequest(url, 12356789).then(res => {
+            expect(res.type).toBe('DELETE_SKILL_FAILURE')
+        })
+    })
     
-//     test(`deleteSkillRequest:: missing id`, () => {
-//         let res = deleteSkillRequest(url, null)
-//         expect(res.type).toBe('DELETE_SKILL_FAILURE')
-//         expect(res.payload.err).toEqual(expect.stringContaining('No skill id'))
-//     })
+    test(`deleteSkillRequest:: missing id`, () => {
+        let res = deleteSkillRequest(url, null)
+        expect(res.type).toBe('DELETE_SKILL_FAILURE')
+        expect(res.payload.err).toEqual(expect.stringContaining('No skill id'))
+    })
     
-//     test(`deleteSkillRequest:: delete 'dummy1'`, () => {
-//         return deleteSkillRequest(url, 999999).then(res => {
-//             expect(res.type).toBe('DELETE_SKILL_SUCCESS')
-//         })
-//     })
-// })
+    test(`deleteSkillRequest:: delete 'dummy1'`, () => {
+        return deleteSkillRequest(url, 999999).then(res => {
+            expect(res.type).toBe('DELETE_SKILL_SUCCESS')
+        })
+    })
+})
