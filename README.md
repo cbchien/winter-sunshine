@@ -36,6 +36,7 @@ To access and modify resources, you can use any HTTP method
 GET POST PUT PATCH DELETE OPTIONS
 ```
 ## Foler Structure
+```
 |-config                    (webpack config,...)
 |-src                       (main application)
     |-client
@@ -47,3 +48,4 @@ GET POST PUT PATCH DELETE OPTIONS
     |-server
         |-routes            
 |-environemt setup
+```
